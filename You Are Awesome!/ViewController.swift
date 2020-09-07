@@ -13,8 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    //var imageNumber = 0
-    //var messageNumber = 0
+
     let totalImages = 9
     
     override func viewDidLoad() {
