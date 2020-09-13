@@ -13,8 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var playSoundSwitch: UISwitch!
     
-
     let totalImages = 10
     var messageNumber = -1
     var imageNumber = -1
@@ -50,6 +50,7 @@ class ViewController: UIViewController {
         return newNumber
     }
 
+    
     @IBAction func messageButtonPressed(_ sender: UIButton) {
         let messages = ["You Are Awesome!", "You Are Great!", "You Are Cool!", "You Are Fantastic!", "When the Genius Bar Needs Help, They Call You!", "You've Got The Design Skills Of Jony Ive!"]
 //        var newMessageNumber : Int
@@ -73,7 +74,9 @@ class ViewController: UIViewController {
 //        } while soundNumber == newSoundNumber
         soundNumber = nonRepeatingRandom(originalNumber: soundNumber, upperBounds: totalSounds)
         print(soundNumber)
-        playSound(name: "sound\(soundNumber)")
+        if playSoundSwitch.isOn {
+            playSound(name: "sound\(soundNumber)")
+        }
         
         //imageNumber = (imageNumber + 1) % 10
         //messageNumber = (messageNumber + 1) % messages.count
@@ -94,6 +97,11 @@ class ViewController: UIViewController {
 //            imageView.image = UIImage(named: "image0")
 //        }
         
+    }
+    @IBAction func playSoundToggled(_ sender: UISwitch) {
+        if !sender.isOn && audioPlayer != nil{
+            audioPlayer.stop()
+        }
     }
     
 }
